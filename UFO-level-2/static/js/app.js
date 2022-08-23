@@ -46,20 +46,30 @@ function filterListener(){
     filters["shape"] = ushape;
     console.log(filters);
     let filteredData = tableData;
-    if(udate || ucity || ustate || ucountry || ushape) {
-        // filteredData = filteredData.filter((row) => row.datetime === date);
-
-
+//    if(udate || ucity || ustate || ucountry || ushape) {
 //        Object.entries(filters).forEach(([key,value])=> {
 //        filteredData =  filteredData.filter(row => row[key]=== value);
+//        });
 
-        Object.entries(filters).forEach(([key,value])=> {
-        filteredData =  filteredData.filter(row => row[key]=== value);
-            
+        if(udate) {
+            filteredData = filteredData.filter((row) => row.datetime === udate);
+        }
+        if (ucity) {
+            filteredData = filteredData.filter((row) => row.city === ucity);
+        }
+        if (ustate) {
+            filteredData = filteredData.filter((row) => row.state === ustate);
+        }
+        if (ucountry) {
+            filteredData = filteredData.filter((row) => row.country === ucountry);
+        }
+        if (ushape) {
+            filteredData = filteredData.filter((row) => row.shape === ushape);
+        }
     
-        });
+    
     console.log(filteredData);
-    }
+    // }
     buildTable(filteredData);
 }
 
